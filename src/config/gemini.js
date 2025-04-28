@@ -1,23 +1,37 @@
-import { GoogleGenAI } from "@google/genai";
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
-const ai = new GoogleGenAI({ apiKey: "AIzaSyDZj8gMtJkjFaL_C1lRNTjPNda3ICbCKVM" });
+const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
 
-async function askBot(message) {
-  const model = ai.getGenerativeModel({ model: "gemini-1.5-flash" }); // Use 1.5 or whichever version you prefer
-
-  const response = await model.generateContent({
-    contents: [
-      { role: "user", parts: [{ text: message }] }
-    ],
-  });
-
-  const text = await response.response.text();
-  return text;
+if (!apiKey) {
+  throw new Error("VITE_GEMINI_API_KEY is not set in .env file");
 }
 
-// Example usage:
-askBot("Explain how AI works in a few words")
-  .then(console.log)
-  .catch(console.error);
+// Log whether we have an API key (but not the actual key)
+console.log("API Key is set:", apiKey ? "Yes" : "No");
+console.log("API Key length:", apiKey ? apiKey.length : 0);
+
+const ai = new GoogleGenerativeAI({ apiKey });
+
+async function askBot(message) {
+  const model = ai.getGenerativeModel({ model: "gemini-pro" });
+
+  try {
+    const result = await model.generateContent(message);
+    const response = await result.response;
+    return response.text();
+  } catch (error) {
+    console.error("Detailed error:", {
+      message: error.message,
+      status: error.status,
+      statusText: error.statusText,
+      details: error.details
+    });
+    
+    if (error.message.includes("API_KEY_INVALID")) {
+      return "Error: Invalid API key. Please check:\n1. You have enabled the Gemini API in Google Cloud Console\n2. Your API key is correct and not expired\n3. You have set up billing for your project\n4. The API key has the necessary permissions";
+    }
+    return "Sorry, I encountered an error while processing your request.";
+  }
+}
 
 export default askBot;
