@@ -1,12 +1,19 @@
 .sidebar{
     min-height: 100vh;
-    min-width: 250px;
     display: inline-flex;
     flex-direction: column;
     justify-content: space-between;
     background-color: #f0f4f9;
-    padding: 25px 20px;
+    padding: 25px 15px;
+    transition: all 0.3s ease;
+    width: 250px;
 }
+
+.sidebar.collapsed {
+    width: 85px;
+    padding: 25px 10px;
+}
+
 .sidebar img{
     width: 20px;
 }
@@ -26,6 +33,8 @@
     font-size: 14px;
     color: grey;
     cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
 }
 .sidebar .new-chat img{
     width: 10px;
@@ -33,21 +42,39 @@
 .sidebar .recent{
     display: flex;
     flex-direction: column;
-    animation: fadeIn 1.5s ;
+    animation: slideDown 0.3s ease-out;
+    overflow-y: auto;
+    max-height: calc(100vh - 300px);
 }
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .sidebar .recent-title{
     margin-top: 30px;
     margin-bottom: 20px;
+    white-space: nowrap;
+    overflow: hidden;
 }
 .sidebar .recent-entry{
     display: flex;
     align-items: start;
     gap: 10px;
     padding: 10px 15px;
-    border-right: 40px;
     border-radius: 50px;
     cursor: pointer;
     color: #282828;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .sidebar .recent-entry:hover {
     background-color: #e2e6eb;
@@ -55,11 +82,18 @@
 .sidebar .bottom{
     display: flex;
     flex-direction: column;
+    gap: 10px;
 }
 .sidebar .bottom-item{
     padding-right: 10px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    white-space: nowrap;
+    overflow: hidden;
 }
+
 @media (max-width: 768px) {
     .sidebar{
         display: none;

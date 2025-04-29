@@ -14,8 +14,11 @@ const Sidebar = () => {
         await onSent(prompt);
     }
 
+    // Create a reversed copy of prevPrompts to show most recent first
+    const reversedPrompts = [...(prevPrompts || [])].reverse();
+
     return (
-        <div className="sidebar">
+        <div className={`sidebar ${!extended ? 'collapsed' : ''}`}>
             <div className="top">
                 <img onClick={()=>setExtended(prev=>!prev)} className="menu" src={assets.menu_icon} alt='' />
                 <div onClick={newChat} className="new-chat">
@@ -25,7 +28,7 @@ const Sidebar = () => {
                 {extended && (
                     <div className="recent">
                         <p className="recent-title">Recent</p>
-                        {prevPrompts && prevPrompts.map((prompt, index) => (
+                        {reversedPrompts.map((prompt, index) => (
                             <div key={index} onClick={() => loadPrompt(prompt)} className="recent-entry">
                                 <img src={assets.message_icon} alt='' />
                                 <p>{prompt.length > 18 ? `${prompt.slice(0, 18)}...` : prompt}</p>
