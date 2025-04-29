@@ -1,9 +1,41 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+:root {
+    /* Light theme variables */
+    --bg-color: #ffffff;
+    --text-color: #333333;
+    --sidebar-bg: #f0f4f9;
+    --card-bg: #f0f4f9;
+    --input-bg: #f8fafc;
+    --border-color: #e2e8f0;
+    --hover-color: #e2e6eb;
+    --gradient-start: #4b90ff;
+    --gradient-end: #ff5546;
+}
+
+[data-theme="dark"] {
+    --bg-color: #1a1a1a;
+    --text-color: #ffffff;
+    --sidebar-bg: #2d2d2d;
+    --card-bg: #2d2d2d;
+    --input-bg: #333333;
+    --border-color: #404040;
+    --hover-color: #404040;
+    --gradient-start: #6ba4ff;
+    --gradient-end: #ff6b6b;
+}
+
 *{
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   font-family: Outfit;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
 
 #root{

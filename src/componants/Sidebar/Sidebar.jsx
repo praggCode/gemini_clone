@@ -1,13 +1,14 @@
 import React from "react";
 import './sidebar.css';
 import {assets} from '../../assets/assets';
+import { SunIcon, MoonIcon, LightBulbIcon, LightCodeIcon, LightCompassIcon, 
+         LightMenuIcon, LightMessageIcon, LightMicIcon, LightPlusIcon, 
+         LightQuestionIcon, LightSendIcon, LightSettingsIcon, LightUserIcon } from '../../assets/ThemeIcons';
 import { Context } from "../../context/Context";
 
-
 const Sidebar = () => { 
-
     const [extended, setExtended] = React.useState(false);
-    const {onSent, prevPrompts, setRecentPrompt, newChat} = React.useContext(Context);
+    const {onSent, prevPrompts, setRecentPrompt, newChat, isDarkTheme, toggleTheme} = React.useContext(Context);
 
     const loadPrompt = async(prompt) => {
         setRecentPrompt(prompt);
@@ -20,9 +21,19 @@ const Sidebar = () => {
     return (
         <div className={`sidebar ${!extended ? 'collapsed' : ''}`}>
             <div className="top">
-                <img onClick={()=>setExtended(prev=>!prev)} className="menu" src={assets.menu_icon} alt='' />
+                <div className="menu-icon" onClick={()=>setExtended(prev=>!prev)}>
+                    {isDarkTheme ? (
+                        <LightMenuIcon />
+                    ) : (
+                        <img src={assets.menu_icon} alt='' />
+                    )}
+                </div>
                 <div onClick={newChat} className="new-chat">
-                    <img src={assets.plus_icon} alt='' />
+                    {isDarkTheme ? (
+                        <LightPlusIcon />
+                    ) : (
+                        <img src={assets.plus_icon} alt='' />
+                    )}
                     {extended?<p>New Chat</p>:null}
                 </div>
                 {extended && (
@@ -30,7 +41,11 @@ const Sidebar = () => {
                         <p className="recent-title">Recent</p>
                         {reversedPrompts.map((prompt, index) => (
                             <div key={index} onClick={() => loadPrompt(prompt)} className="recent-entry">
-                                <img src={assets.message_icon} alt='' />
+                                {isDarkTheme ? (
+                                    <LightMessageIcon />
+                                ) : (
+                                    <img src={assets.message_icon} alt='' />
+                                )}
                                 <p>{prompt.length > 18 ? `${prompt.slice(0, 18)}...` : prompt}</p>
                             </div>
                         ))}
@@ -38,17 +53,29 @@ const Sidebar = () => {
                 )}
             </div>
             <div className="bottom">
-                <div className="bottom-item recent-entry"> 
-                    <img src={assets.question_icon} alt='' />
-                    {extended?<p>Help</p>:null}
+                <div className="bottom-item recent-entry theme-toggle" onClick={toggleTheme}> 
+                    <div className="theme-icon">
+                        {isDarkTheme ? <SunIcon /> : <MoonIcon />}
+                    </div>
+                    {extended?<p>{isDarkTheme ? 'Light Mode' : 'Dark Mode'}</p>:null}
                 </div>
                 <div className="bottom-item recent-entry"> 
-                    <img src={assets.history_icon} alt='' />
-                    {extended?<p>Activity</p>:null}
-                </div>
-                <div className="bottom-item recent-entry"> 
-                    <img src={assets.setting_icon} alt='' />
+                    {isDarkTheme ? (
+                        <LightSettingsIcon />
+                    ) : (
+                        <img src={assets.setting_icon} alt='' />
+                    )}
                     {extended?<p>Settings</p>:null}
+                </div>
+                <div className="bottom-item recent-entry"> 
+                    {isDarkTheme ? (
+                        <div className="icon-wrapper">
+                            <LightMicIcon />
+                        </div>
+                    ) : (
+                        <img src={assets.mic_icon} alt='' />
+                    )}
+                    {extended?<p>Voice Input</p>:null}
                 </div>
             </div>
         </div>

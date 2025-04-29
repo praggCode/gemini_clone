@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 import askBot from "../config/gemini";
 
 
@@ -14,6 +14,16 @@ const ContextProvider = (props) => {
     const [resultData, setResultData] = useState("");
     const [userName, setUserName] = useState("User");
     const [showWelcome, setShowWelcome] = useState(true);
+    const [isDarkTheme, setIsDarkTheme] = useState(true);
+
+    // Set initial theme
+    useEffect(() => {
+        document.documentElement.setAttribute('data-theme', isDarkTheme ? 'dark' : 'light');
+    }, [isDarkTheme]);
+
+    const toggleTheme = () => {
+        setIsDarkTheme(prev => !prev);
+    };
 
     const delayPara = (index,nextWord) =>{
         setTimeout(() => {
@@ -80,7 +90,9 @@ const ContextProvider = (props) => {
         newChat,
         userName,
         showWelcome,
-        handleNameSubmit
+        handleNameSubmit,
+        isDarkTheme,
+        toggleTheme
     }
 
     return(

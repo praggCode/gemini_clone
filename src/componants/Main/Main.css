@@ -3,6 +3,7 @@
     min-height: 100vh;
     padding-bottom: 15vh;
     position: relative;
+    background-color: var(--bg-color);
 }
 .main .nav{
     display: flex;
@@ -10,7 +11,7 @@
     justify-content: space-between;
     font-size: 22px;
     padding: 20px;
-    color: #585858;
+    color: var(--text-color);
 }
 .main .nav img{
     width: 40px;
@@ -23,12 +24,12 @@
 .main .greet{
     margin: 50px 0px;
     font-size: 56px;
-    color: #c4c7c5;
+    color: var(--text-color);
     font-weight: 500;
     padding: 20px;
 }
 .main .greet span{
-    background: -webkit-linear-gradient(16deg, #4b90ff, #ff5546);
+    background: linear-gradient(16deg, var(--gradient-start), var(--gradient-end));
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -42,7 +43,7 @@
 .main .card {
     height: 200px;
     padding: 15px;
-    background-color: #f0f4f9;
+    background-color: var(--card-bg);
     border-radius: 10px;
     position: relative;
     cursor: pointer;
@@ -51,17 +52,17 @@
     width: 35px;
     position: absolute;
     padding: 5px;
-    background-color: white;
+    background-color: var(--bg-color);
     border-radius: 20px;
     bottom: 10px;
     right: 10px;
 }
 .main .card p{
     font-size: 20px;
-    color: #585858;
+    color: var(--text-color);
 }
 .main .card:hover{
-    background-color: #dfe4ea;
+    background-color: var(--hover-color);
 }
 .main-bottom{
     position: absolute;
@@ -76,7 +77,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 20px;
-    background-color: #f0f4f9;
+    background-color: var(--card-bg);
     padding: 10px 20px;
     border-radius: 50px;
 }
@@ -91,7 +92,7 @@
     background-color: transparent;
     padding: 10px;
     font-size: 18px;
-    color: #585858;
+    color: var(--text-color);
 }
 .search-box div{
     display: flex;
@@ -103,6 +104,7 @@
     margin: 15px auto;
     text-align: center;
     font-weight: 300;
+    color: var(--text-color);
 }
 .result{
     padding: 0px 5%;
@@ -137,8 +139,8 @@
 .loader hr{
     border-radius: 4px;
     border: none;
-    background-color: #f6f7f8;
-    background: linear-gradient(to right,#9ed7ff,#ffffff,#9ed7ff);
+    background-color: var(--card-bg);
+    background: linear-gradient(to right, var(--gradient-start), var(--bg-color), var(--gradient-start));
     background-size: 800px 50px;
     height: 20px;
     animation: loader 3s infinite linear;
@@ -155,6 +157,7 @@
     font-size: 17px;
     font-weight: 300;
     line-height: 1.8;
+    color: var(--text-color);
 }
 @media (max-width: 768px) {
     .main-bottom input{

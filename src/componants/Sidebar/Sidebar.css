@@ -3,7 +3,7 @@
     display: inline-flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: #f0f4f9;
+    background-color: var(--sidebar-bg);
     padding: 25px 15px;
     transition: all 0.3s ease;
     width: 250px;
@@ -14,54 +14,55 @@
     padding: 25px 10px;
 }
 
-.sidebar img{
+.sidebar img, .sidebar svg {
     width: 20px;
+    height: 20px;
 }
 
-.sidebar .menu{
+.menu-icon {
     display: block;
     margin-left: 10px;
     cursor: pointer;
 }
+
 .sidebar .new-chat{
     margin-top: 50px;
     display: inline-flex;
     align-items: center;
-    justify-content: center;
     gap: 10px;
-    padding: 12px 20px;
-    background-color: #e6eaf1;
+    padding: 10px 15px;
+    background-color: var(--card-bg);
     border-radius: 50px;
     font-size: 14px;
-    color: grey;
+    color: var(--text-color);
     cursor: pointer;
-    white-space: nowrap;
-    overflow: hidden;
-    transition: all 0.3s ease;
 }
 
 .sidebar.collapsed .new-chat {
-    padding: 12px;
-    width: 50px;
-    height: 50px;
+    padding: 10px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     justify-content: center;
 }
 
-.sidebar .new-chat:hover {
-    background-color: #d8dce3;
+.sidebar .new-chat img {
+    width: 15px;
+    height: 20px;
 }
 
-.sidebar .new-chat img{
-    width: 12px;
+.sidebar .new-chat svg{
+    width: 20px;
+    height: 20px;
+}
+.sidebar .new-chat:hover {
+    background-color: var(--hover-color);
 }
 
 .sidebar .recent{
     display: flex;
     flex-direction: column;
     animation: slideDown 0.3s ease-out;
-    overflow-y: auto;
-    max-height: calc(100vh - 300px);
 }
 
 @keyframes slideDown {
@@ -78,35 +79,25 @@
 .sidebar .recent-title{
     margin-top: 30px;
     margin-bottom: 20px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-align: left;
 }
 
 .sidebar .recent-entry{
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 10px 15px;
+    padding: 10px;
     border-radius: 50px;
     cursor: pointer;
-    color: #282828;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    transition: all 0.3s ease;
+    color: var(--text-color);
 }
 
-.sidebar.collapsed .recent-entry {
-    padding: 10px;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    justify-content: center;
+.sidebar .recent-entry img, .sidebar .recent-entry svg {
+    width: 20px;
+    height: 20px;
 }
 
 .sidebar .recent-entry:hover {
-    background-color: #e2e6eb;
+    background-color: var(--hover-color);
 }
 
 .sidebar .bottom{
@@ -116,15 +107,14 @@
 }
 
 .sidebar .bottom-item{
-    padding: 10px 15px;
+    padding: 10px;
     cursor: pointer;
     display: flex;
     align-items: center;
     gap: 10px;
-    white-space: nowrap;
-    overflow: hidden;
     border-radius: 50px;
     transition: all 0.3s ease;
+    color: var(--text-color);
 }
 
 .sidebar.collapsed .bottom-item {
@@ -135,12 +125,51 @@
     justify-content: center;
 }
 
+.sidebar .bottom-item img, .sidebar .bottom-item svg {
+    width: 20px;
+    height: 20px;
+}
+
 .sidebar .bottom-item:hover {
-    background-color: #e2e6eb;
+    background-color: var(--hover-color);
 }
 
 @media (max-width: 768px) {
     .sidebar{
         display: none;
     }
+}
+
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.theme-icon {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.theme-icon svg {
+    width: 100%;
+    height: 100%;
+    color: var(--text-color);
+    transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover .theme-icon svg {
+    transform: rotate(15deg);
+}
+
+.icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    color: var(--text-color);
 }
