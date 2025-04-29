@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import "./Main.css"; 
 import { assets } from "../../assets/assets";
-import { Context } from "../../context/Context.jsx";
+import { Context } from "../../context/Context";
 import WelcomePopup from "../welcome/WelcomePopup";
 
 const Main = () => {
