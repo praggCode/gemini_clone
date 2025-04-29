@@ -17,6 +17,7 @@
 .sidebar img{
     width: 20px;
 }
+
 .sidebar .menu{
     display: block;
     margin-left: 10px;
@@ -26,8 +27,9 @@
     margin-top: 50px;
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
-    padding: 10px 15px;
+    padding: 12px 20px;
     background-color: #e6eaf1;
     border-radius: 50px;
     font-size: 14px;
@@ -35,10 +37,25 @@
     cursor: pointer;
     white-space: nowrap;
     overflow: hidden;
+    transition: all 0.3s ease;
 }
+
+.sidebar.collapsed .new-chat {
+    padding: 12px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    justify-content: center;
+}
+
+.sidebar .new-chat:hover {
+    background-color: #d8dce3;
+}
+
 .sidebar .new-chat img{
-    width: 10px;
+    width: 12px;
 }
+
 .sidebar .recent{
     display: flex;
     flex-direction: column;
@@ -63,10 +80,12 @@
     margin-bottom: 20px;
     white-space: nowrap;
     overflow: hidden;
+    text-align: left;
 }
+
 .sidebar .recent-entry{
     display: flex;
-    align-items: start;
+    align-items: center;
     gap: 10px;
     padding: 10px 15px;
     border-radius: 50px;
@@ -75,23 +94,49 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    transition: all 0.3s ease;
 }
+
+.sidebar.collapsed .recent-entry {
+    padding: 10px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    justify-content: center;
+}
+
 .sidebar .recent-entry:hover {
     background-color: #e2e6eb;
 }
+
 .sidebar .bottom{
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
+
 .sidebar .bottom-item{
-    padding-right: 10px;
+    padding: 10px 15px;
     cursor: pointer;
     display: flex;
     align-items: center;
     gap: 10px;
     white-space: nowrap;
     overflow: hidden;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.sidebar.collapsed .bottom-item {
+    padding: 10px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    justify-content: center;
+}
+
+.sidebar .bottom-item:hover {
+    background-color: #e2e6eb;
 }
 
 @media (max-width: 768px) {

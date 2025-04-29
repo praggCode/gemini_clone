@@ -60,7 +60,7 @@ const Main = () => {
                             {input ? <img onClick={() =>onSent()} src={assets.send_icon} alt='' /> : null }
                         </div>
                     </div>
-                    <p className="bottom-info">Bogus AI may display inaccurate info,including about people, so double check it's responses. Your privacy and Bogus AI Apps</p>
+                    <p className="bottom-info"><b>©</b> Bogus AI may display inaccurate info,including about people, so double check it's responses.</p>
                 </div>
             </div>
         </div>
