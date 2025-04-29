@@ -12,6 +12,8 @@ const ContextProvider = (props) => {
     const [showResult, setShowResult] = useState(false);
     const [loading, setLoading] = useState(false);
     const [resultData, setResultData] = useState("");
+    const [userName, setUserName] = useState("User");
+    const [showWelcome, setShowWelcome] = useState(true);
 
     const delayPara = (index,nextWord) =>{
         setTimeout(() => {
@@ -23,6 +25,10 @@ const ContextProvider = (props) => {
         setShowResult(false);
         setResultData("");
         setRecentPrompt("");
+    }
+    const handleNameSubmit = (name) => {
+        setUserName(name);
+        setShowWelcome(false);
     }
     const onSent = async(prompt) =>{
 
@@ -72,6 +78,9 @@ const ContextProvider = (props) => {
         input,
         setInput,
         newChat,
+        userName,
+        showWelcome,
+        handleNameSubmit
     }
 
     return(

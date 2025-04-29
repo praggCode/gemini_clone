@@ -2,22 +2,23 @@ import React, { useContext } from "react";
 import "./Main.css"; 
 import { assets } from "../../assets/assets";
 import { Context } from "../../context/Context";
+import WelcomePopup from "../welcome/WelcomePopup";
 
 const Main = () => {
+    const {onSent, recentPrompt, showResult, loading, resultData, input, setInput, userName, showWelcome, setShowWelcome, handleNameSubmit} = useContext(Context);
 
-    const {onSent,recentPrompt,showResult,loading,resultData,input,setInput} = useContext(Context);
-    return(
+    return (
         <div className="main">
+            {showWelcome && <WelcomePopup onClose={() => setShowWelcome(false)} onNameSubmit={handleNameSubmit} />}
             <div className="nav">
                 <p>Bogus AI</p>
                 <img src={assets.user_icon} alt='' />
             </div>
             <div className="main-content">
-
                 {!showResult 
                 ?<>
                     <div className="greet">
-                        <p><span>Hello, Pragg</span></p>
+                        <p><span>Hello, {userName}</span></p>
                         <p>How can I help you today?</p>
                     </div>
                     <div className="Cards">
@@ -60,7 +61,7 @@ const Main = () => {
                             {input ? <img onClick={() =>onSent()} src={assets.send_icon} alt='' /> : null }
                         </div>
                     </div>
-                    <p className="bottom-info"><b>©</b> Bogus AI may display inaccurate info,including about people, so double check it's responses.</p>
+                    <p className="bottom-info">© Bogus AI may display inaccurate info,including about people, so double check it's responses.</p>
                 </div>
             </div>
         </div>
