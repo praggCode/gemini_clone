@@ -8,7 +8,7 @@ export const Context = createContext();
 const ContextProvider = (props) => {
     const [input, setInput] = useState("");
     const [recentPrompt, setRecentPrompt] = useState("");
-    const [prevPrompt, setPrevPrompts] = useState("");
+    const [prevPrompts, setPrevPrompts] = useState([]);
     const [showResult, setShowResult] = useState(false);
     const [loading, setLoading] = useState(false);
     const [resultData, setResultData] = useState("");
@@ -21,6 +21,8 @@ const ContextProvider = (props) => {
     const newChat = () =>{
         setLoading(false);
         setShowResult(false);
+        setResultData("");
+        setRecentPrompt("");
     }
     const onSent = async(prompt) =>{
 
@@ -32,7 +34,7 @@ const ContextProvider = (props) => {
             response = await askBot(prompt);
             setRecentPrompt(prompt);
         }else{
-            setPrevPrompts(prev => [...prev,input]);
+            setPrevPrompts(prev => [...prev, input]);
             setRecentPrompt(input);
             response = await askBot(input);
         }
@@ -44,7 +46,7 @@ const ContextProvider = (props) => {
                 newResponse += responseArray[i];
             }
             else{
-                newResponse += "<b/>" + responseArray[i] + "<b/>";
+                newResponse += "<b>" + responseArray[i] + "</b>";
             }
         }
         let newResponse2 = newResponse.split("*").join("<br>");
@@ -59,7 +61,7 @@ const ContextProvider = (props) => {
 
     
     const contextValue = {
-        prevPrompt,
+        prevPrompts,
         setPrevPrompts,
         onSent,
         setRecentPrompt,
