@@ -5,11 +5,13 @@ import { Context } from "../../context/Context";
 import WelcomePopup from "../welcome/WelcomePopup";
 
 const Main = () => {
-    const {onSent, recentPrompt, showResult, loading, resultData, input, setInput, userName, showWelcome, setShowWelcome, handleNameSubmit, isDarkTheme} = useContext(Context);
+    const context = useContext(Context);
+    console.log("Context values:", context);
+    const {onSent, recentPrompt, showResult, loading, resultData, input, setInput, userName, showWelcome, handleCloseWelcome, handleNameSubmit, isDarkTheme} = context;
 
     return (
         <div className="main">
-            {showWelcome && <WelcomePopup onClose={() => setShowWelcome(false)} onNameSubmit={handleNameSubmit} />}
+            {showWelcome && <WelcomePopup onClose={handleCloseWelcome} onNameSubmit={handleNameSubmit} />}
             <div className="nav">
                 <p>Bogus AI</p>
                 <img src={assets.user_icon} alt='' />

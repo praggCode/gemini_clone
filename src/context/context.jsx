@@ -1,10 +1,8 @@
 import { createContext, useState, useEffect } from "react";
 import askBot from "../config/gemini";
 
+export const Context = createContext(null);
 
-export const Context = createContext();
-
-    
 const ContextProvider = (props) => {
     const [input, setInput] = useState("");
     const [recentPrompt, setRecentPrompt] = useState("");
@@ -30,18 +28,24 @@ const ContextProvider = (props) => {
             setResultData(prev => prev + nextWord);
         },75*index);
     }
+
     const newChat = () =>{
         setLoading(false);
         setShowResult(false);
         setResultData("");
         setRecentPrompt("");
     }
+
     const handleNameSubmit = (name) => {
         setUserName(name);
         setShowWelcome(false);
     }
-    const onSent = async(prompt) =>{
 
+    const handleCloseWelcome = () => {
+        setShowWelcome(false);
+    }
+
+    const onSent = async(prompt) =>{
         setResultData("");
         setLoading(true);
         setShowResult(true);
@@ -75,7 +79,6 @@ const ContextProvider = (props) => {
         setInput("");
     }
 
-    
     const contextValue = {
         prevPrompts,
         setPrevPrompts,
@@ -90,6 +93,7 @@ const ContextProvider = (props) => {
         newChat,
         userName,
         showWelcome,
+        handleCloseWelcome,
         handleNameSubmit,
         isDarkTheme,
         toggleTheme
@@ -101,4 +105,5 @@ const ContextProvider = (props) => {
         </Context.Provider>
     )
 }
+
 export default ContextProvider;
