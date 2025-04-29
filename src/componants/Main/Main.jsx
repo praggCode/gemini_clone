@@ -5,7 +5,7 @@ import { Context } from "../../context/Context";
 import WelcomePopup from "../welcome/WelcomePopup";
 
 const Main = () => {
-    const {onSent, recentPrompt, showResult, loading, resultData, input, setInput, userName, showWelcome, setShowWelcome, handleNameSubmit} = useContext(Context);
+    const {onSent, recentPrompt, showResult, loading, resultData, input, setInput, userName, showWelcome, setShowWelcome, handleNameSubmit, isDarkTheme} = useContext(Context);
 
     return (
         <div className="main">
@@ -18,7 +18,7 @@ const Main = () => {
                 {!showResult 
                 ?<>
                     <div className="greet">
-                        <p><span>Hello, {userName}</span></p>
+                        <p><span>Hello, {userName}...</span></p>
                         <p>How can I help you today?</p>
                     </div>
                     <div className="Cards">
@@ -56,8 +56,8 @@ const Main = () => {
                     <div className="search-box">
                         <input onChange={(e) => setInput(e.target.value)} value={input} type="text" placeholder="Enter a promt here ..." />
                         <div>
-                            <img src={assets.mic_icon} alt='' />
-                            {input ? <img onClick={() =>onSent()} src={assets.send_icon} alt='' /> : null }
+                            <img src={isDarkTheme ? assets.dark_mic_icon : assets.mic_icon} alt='' />
+                            {input ? <img onClick={() =>onSent()} src={isDarkTheme ? assets.dark_send_icon : assets.send_icon} alt='' /> : null }
                         </div>
                     </div>
                     <p className="bottom-info">© Bogus AI may display inaccurate info,including about people, so double check it's responses.</p>

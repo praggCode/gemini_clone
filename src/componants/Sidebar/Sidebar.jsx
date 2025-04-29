@@ -2,7 +2,7 @@ import React from "react";
 import './sidebar.css';
 import {assets} from '../../assets/assets';
 import { SunIcon, MoonIcon, LightBulbIcon, LightCodeIcon, LightCompassIcon, 
-         LightMenuIcon, LightMessageIcon, LightMicIcon, LightPlusIcon, 
+         LightMenuIcon, LightMessageIcon, LightPlusIcon, 
          LightQuestionIcon, LightSendIcon, LightSettingsIcon, LightUserIcon } from '../../assets/ThemeIcons';
 import { Context } from "../../context/Context";
 
@@ -66,16 +66,6 @@ const Sidebar = () => {
                         <img src={assets.setting_icon} alt='' />
                     )}
                     {extended?<p>Settings</p>:null}
-                </div>
-                <div className="bottom-item recent-entry"> 
-                    {isDarkTheme ? (
-                        <div className="icon-wrapper">
-                            <LightMicIcon />
-                        </div>
-                    ) : (
-                        <img src={assets.mic_icon} alt='' />
-                    )}
-                    {extended?<p>Voice Input</p>:null}
                 </div>
             </div>
         </div>
