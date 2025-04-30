@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
 import "./Main.css"; 
 import { assets } from "../../assets/assets";
-import { Context } from "../../context/Context";
+
 import WelcomePopup from "../welcome/WelcomePopup";
 
-const Main = () => {
+const Main = ({Context}) => {
     const context = useContext(Context);
+
     console.log("Context values:", context);
     const {onSent, recentPrompt, showResult, loading, resultData, input, setInput, userName, showWelcome, handleCloseWelcome, handleNameSubmit, isDarkTheme} = context;
 

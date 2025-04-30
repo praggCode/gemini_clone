@@ -1,12 +1,13 @@
 import React from "react";
-import Sidebar from "./components/sidebar/sidebar";
-import Main from "./components/main/main";
+import Sidebar from "./components/Sidebar/Sidebar";
+import Main from "./components/Main/Main";
+import { Context } from "./context/context";
 
 const App = () => { 
   return (
     <>
-      <Sidebar />
-      <Main />
+      <Sidebar Context={Context}/>
+      <Main Context={Context}/>
     </>
   )
 }

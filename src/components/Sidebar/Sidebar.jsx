@@ -4,9 +4,9 @@ import {assets} from '../../assets/assets';
 import { SunIcon, MoonIcon, LightBulbIcon, LightCodeIcon, LightCompassIcon, 
          LightMenuIcon, LightMessageIcon, LightPlusIcon, 
          LightQuestionIcon, LightSendIcon, LightSettingsIcon, LightUserIcon } from '../../assets/ThemeIcons';
-import { Context } from "../../context/Context";
 
-const Sidebar = () => { 
+const Sidebar = ({Context}) => { 
+    
     const [extended, setExtended] = React.useState(false);
     const {onSent, prevPrompts, setRecentPrompt, newChat, isDarkTheme, toggleTheme} = React.useContext(Context);
 
