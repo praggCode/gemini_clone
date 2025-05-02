@@ -1,12 +1,19 @@
-# React + Vite
+# 🤖 BogusAi
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**BogusAi** is an AI-powered web application built with **React.js**, leveraging the **Gemini API** to deliver intelligent and interactive features.
 
-Currently, two official plugins are available:
+## 🚀 Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This project is focused on experimenting with and building real-time AI experiences. It serves as a platform to explore how large language models can be integrated into web applications.
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Frontend**: [React.js](https://reactjs.org/)
+- **AI Integration**: [Gemini API](https://ai.google.dev/gemini-api)
+
+## ✨ Features
+
+- User-friendly interface built with React
+- Seamless interaction with the Gemini API
+- Handles real-time prompts and intelligent responses
+- Easy to scale and extend
